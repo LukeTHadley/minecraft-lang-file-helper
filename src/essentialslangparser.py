@@ -29,7 +29,12 @@ class EssentialsLanguageParser:
 
 
         if not os.path.exists(arg):
-            parser.error("The file %s does not exist!" % arg)
+            parser.error(f"The file {arg} does not exist!")
+            return
+        
+        if os.path.splitext(arg)[1] != ".properties":
+            parser.error(f"The file {arg} is not a '.properties' file.")
+            return
 
         str_file =  open(arg, 'r')  # return an open file handle
         
